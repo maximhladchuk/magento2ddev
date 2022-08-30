@@ -1,0 +1,43 @@
+<div id="modal">
+    <div class="modal-body-content">
+        <h2><?= $block->escapeHtml(__('You must verify your age')) ?></h2>
+        <p><?= $block->escapeHtml(__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')) ?></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+    let mainModalWindowCheckStatus = false;
+    require([
+        "jquery",
+        "Magento_Ui/js/modal/modal"
+    ],function($, modal) {
+
+        var options = {
+            type: 'popup',
+            responsive: true,
+            autoOpen: true,
+            title: '',
+            clickableOverlay: false,
+            buttons: [{
+                text: $.mage.__('Close'),
+                class: '',
+                click: function () {
+                    if (mainModalWindowCheckStatus) {
+                        this.closeModal();
+                    }
+                }
+            }, {
+                text: $.mage.__('I`m older than 18'),
+                class: '',
+                click: function () {
+                    mainModalWindowCheckStatus = true;
+                }
+            }]
+        };
+
+        var popup = modal(options, $('#modal'));
+        $("#button").click(function() {
+            $('#modal').modal('openModal');
+        });
+    });
+</script>
