@@ -1,43 +1,36 @@
-<div id="modal">
-    <div class="modal-body-content">
-        <h2><?= $block->escapeHtml(__('You must verify your age')) ?></h2>
-        <p><?= $block->escapeHtml(__('Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')) ?></p>
+<span class="main-page-modal-container">
+    <div class="main-page-modal-wrapper">
+        <img class="main-page-modal-image" src="https://wp4all.co.il/wp-content/uploads/2019/06/%D7%AA%D7%9E%D7%95%D7%A0%D7%94-%D7%A6%D7%95%D7%A8-%D7%A7%D7%A9%D7%A8.png" alt="Contact Us Image">
+        <form class="main-page-modal-form">
+            <div>
+                Contact us
+            </div>
+            <input placeholder="Username">
+            <input placeholder="Email">
+            <textarea placeholder="Message..."></textarea>
+            <button type="button" class="main-page-modal-form-button">
+                Send message →
+            </button>
+            <div class="main-page-modal-form-button-container">
+                <button>Cancel for this session</button>
+                <button>Cancel forever</button>
+            </div>
+        </form>
     </div>
-</div>
+    <div class="main-page-modal-backdrop">
 
-<script type="text/javascript">
-    let mainModalWindowCheckStatus = false;
-    require([
-        "jquery",
-        "Magento_Ui/js/modal/modal"
-    ],function($, modal) {
+    </div>
+</span>
 
-        var options = {
-            type: 'popup',
-            responsive: true,
-            autoOpen: true,
-            title: '',
-            clickableOverlay: false,
-            buttons: [{
-                text: $.mage.__('Close'),
-                class: '',
-                click: function () {
-                    if (mainModalWindowCheckStatus) {
-                        this.closeModal();
-                    }
-                }
-            }, {
-                text: $.mage.__('I`m older than 18'),
-                class: '',
-                click: function () {
-                    mainModalWindowCheckStatus = true;
-                }
-            }]
-        };
 
-        var popup = modal(options, $('#modal'));
-        $("#button").click(function() {
-            $('#modal').modal('openModal');
-        });
-    });
+
+
+
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "CustomMax_main-page-popup/js/myscript": {}
+        }
+    }
 </script>

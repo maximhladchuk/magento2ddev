@@ -8,7 +8,7 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block name="helloworld_display" template="CustomMax_main-page-popup::custom.phtml" />
+            <block name="CustomMax_main-page-popup" template="CustomMax_main-page-popup::custom.phtml" />
         </referenceContainer>
     </body>
 </page>
