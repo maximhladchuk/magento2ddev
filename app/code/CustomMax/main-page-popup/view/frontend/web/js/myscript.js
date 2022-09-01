@@ -1,10 +1,34 @@
+let mainPageModalContainer = document.getElementsByClassName("main-page-modal-container"),
+    bodyElement = document.getElementsByTagName('body'),
+    toggleModalWindowStatus = true;
 
 
 
+if (!localStorage.getItem('modalVisibilityData')){
+    localStorage.setItem('modalVisibilityData', 'visible');
+} else if (localStorage.getItem('modalVisibilityData') == 'invisible'){
+    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    bodyElement[0].style.overflow = "visible";
+}
 
 
+document.getElementById('button-cancel-modal-fever').addEventListener('click', function () {
+    event.preventDefault();
 
+    localStorage.setItem('modalVisibilityData', 'invisible');
 
+    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    bodyElement[0].style.overflow = "visible";
+
+});
+
+document.getElementById('button-cancel-modal-session').addEventListener('click', function () {
+    event.preventDefault();
+
+    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    bodyElement[0].style.overflow = "visible";
+
+});
 
 
 
