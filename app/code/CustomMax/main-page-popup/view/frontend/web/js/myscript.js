@@ -2,30 +2,37 @@ let mainPageModalContainer = document.getElementsByClassName("main-page-modal-co
     bodyElement = document.getElementsByTagName('body'),
     toggleModalWindowStatus = true;
 
+debugger;
 
-
-if (!localStorage.getItem('modalVisibilityData')){
+if (!localStorage.getItem('modalVisibilityData')) {
     localStorage.setItem('modalVisibilityData', 'visible');
-} else if (localStorage.getItem('modalVisibilityData') == 'invisible'){
-    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    mainPageModalContainer[0].classList.toggle('modal-display-block')
+    bodyElement[0].style.overflow = "hidden";
+}
+else if (localStorage.getItem('modalVisibilityData') == 'visible'){
+    mainPageModalContainer[0].classList.toggle('modal-display-block')
+    bodyElement[0].style.overflow = "hiiden";
+}else if (localStorage.getItem('modalVisibilityData') == 'invisible'){
     bodyElement[0].style.overflow = "visible";
 }
+
 
 
 document.getElementById('button-cancel-modal-fever').addEventListener('click', function () {
     event.preventDefault();
 
-    localStorage.setItem('modalVisibilityData', 'invisible');
 
-    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    localStorage.setItem('modalVisibilityData', 'invisible');
+    mainPageModalContainer[0].classList.toggle('modal-display-block')
     bodyElement[0].style.overflow = "visible";
+
 
 });
 
 document.getElementById('button-cancel-modal-session').addEventListener('click', function () {
     event.preventDefault();
 
-    mainPageModalContainer[0].classList.toggle('modal-display-none')
+    mainPageModalContainer[0].classList.toggle('modal-display-block')
     bodyElement[0].style.overflow = "visible";
 
 });
@@ -37,41 +44,61 @@ document.getElementById('button-cancel-modal-session').addEventListener('click',
 
 
 
-// let mainModalWindowCheckStatus = false;
-// require([
-//         "jquery",
-//         "Magento_Ui/js/modal/modal"
-//     ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// let mainPageModalContainer = document.getElementsByClassName("main-page-modal-container"),
+//     bodyElement = document.getElementsByTagName('body'),
+//     toggleModalWindowStatus = true;
 //
-//     function ($, modal
-//     ) {
+// localStorage.setItem('modalVisibilityData', 'invisible');
 //
-//         var options = {
-//             type: 'popup',
-//             responsive: true,
-//             autoOpen: true,
-//             title: '',
-//             clickableOverlay: false,
-//             buttons: [{
-//                 text: $.mage.__('Close'),
-//                 class: '',
-//                 click: function () {
-//                     if (mainModalWindowCheckStatus) {
-//                         this.closeModal();
-//                     }
-//                 }
-//             }, {
-//                 text: $.mage.__('I`m older than 18'),
-//                 class: '',
-//                 click: function () {
-//                     mainModalWindowCheckStatus = true;
-//                 }
-//             }]
-//         };
+// console.log(localStorage.getItem('modalVisibilityData'))
 //
-//         var popup = modal(options, $('#modal'));
-//         $("#button").click(function() {
-//             $('#modal').modal('openModal');
-//         });
-//     })
-// ;
+//
+//
+// document.getElementById('button-cancel-modal-fever').addEventListener('click', function () {
+//     event.preventDefault();
+//
+//     mainPageModalContainer[0].classList.toggle('modal-display-none')
+//     bodyElement[0].style.overflow = "visible";
+//
+//
+// });
+//
+// document.getElementById('button-cancel-modal-session').addEventListener('click', function () {
+//     event.preventDefault();
+//
+//     mainPageModalContainer[0].classList.toggle('modal-display-none')
+//     bodyElement[0].style.overflow = "visible";
+//
+// });
