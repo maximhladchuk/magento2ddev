@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page layout="3columns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<!--    <update handle="default_head_blocks"/>-->
+    <head>
+        <link src="//db.onlinewebfonts.com/c/a0227f2dfc5fea07f5092f15f2bde8c9?family=DobraSlabW01-Bold" type="url" rel="stylesheet"/>
+    </head>
+    <body>
+        <referenceBlock name="header-wrapper">
+        <block class="Magento\Framework\View\Element\Html\Link" name="categories-link" before="top.search">
+            <arguments>
+                <argument name="label" xsi:type="string" translate="true">View all</argument>
+                <argument name="path" xsi:type="string" translate="true">customlink</argument>
+            </arguments>
+        </block>
+        </referenceBlock>
+        <move element="authorization-link" destination="top.links" after="-"/>
+        <move element="top.links" destination="header-wrapper" after="top.search"/>
+        <move element="minicart" destination="top.links" after="-"/>
+        <referenceBlock name="header.panel" remove="true" />
+
+        <referenceContainer name="footer-container">
+            <container name="footer" as="footer" label="Page Footer" htmlTag="div" htmlClass="footer content">
+                <block name="footer_coolblue" template="Magento_Theme::html/footer_theme.phtml"/>
+                <block class="Magento\Store\Block\Switcher" name="store_switcher" as="store_switcher" template="Magento_Store::switch/stores.phtml"/>
+                <block class="Magento\Framework\View\Element\Html\Links" name="footer_links">
+                    <arguments>
+                        <argument name="css_class" xsi:type="string">footer links</argument>
+                    </arguments>
+                </block>
+                <block class="Magento\Theme\Block\Html\Footer" name="copyright" template="Magento_Theme::html/copyright.phtml"/>
+                <block class="Magento\Framework\View\Element\Template" name="report.bugs" template="Magento_Theme::html/bugreport.phtml" ifconfig="design/footer/report_bugs"/>
+            </container>
+        </referenceContainer>
+    </body>
+</page>

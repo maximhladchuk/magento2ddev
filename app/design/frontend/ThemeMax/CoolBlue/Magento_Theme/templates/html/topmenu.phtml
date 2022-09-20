@@ -1,0 +1,50 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+/**
+ * Top menu for store
+ *
+ * @var $block \Magento\Theme\Block\Html\Topmenu
+ */
+$columnsLimit = $block->getColumnsLimit() ?: 0;
+$_menuHtml = $block->getHtml('level-top', 'submenu', $columnsLimit)
+?>
+
+<nav class="navigation" data-action="navigation">
+    <ul data-mage-init='{"menu":{"responsive":true, "expanded":true, "position":{"my":"left top","at":"left bottom"}}}'>
+        <?= $block->getChildHtml() ?>
+        <li>
+            <button type="button">Computers & tablets</button>
+        </li>
+        <li>
+            <button type="button">Image & sound</button>
+        </li>
+        <li>
+            <button type="button">Telephony</button>
+        </li>
+        <li>
+            <button type="button">Household & living</button>
+        </li>
+        <li>
+            <button type="button">Kitchen</button>
+        </li>
+        <li>
+            <button type="button">Sports & beauty</button>
+        </li>
+        <li>
+            <button type="button">Photo & video</button>
+        </li>
+        <li>
+            <button type="button">Navigation, travel & fashion</button>
+        </li>
+        <li>
+            <button type="button">Garden & tools</button>
+        </li>
+        <li>
+            <button type="button">Promotions</button>
+        </li>
+    </ul>
+</nav>
