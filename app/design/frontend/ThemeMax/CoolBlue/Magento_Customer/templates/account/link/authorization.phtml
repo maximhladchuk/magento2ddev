@@ -1,0 +1,28 @@
+<?php
+/**
+ * @author      Maxim <maxim.hladchuk@gmail.com>
+ * @copyright   Copyright (c) 2022 GmbH
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**
+ * @var \Magento\Customer\Block\Account\AuthorizationLink $block
+ * @var \Magento\Framework\Escaper $escaper
+ */
+$dataPostParam = '';
+if ($block->isLoggedIn()) {
+    $dataPostParam = sprintf(" data-post='%s'", $block->getPostParams());
+}
+?>
+<li class="link authorization-link" data-label="<?= $escaper->escapeHtml(__('or')) ?>">
+    <a <?= /* @noEscape */ $block->getLinkAttributes() ?>
+        <?= /* @noEscape */ $dataPostParam ?>>
+        <svg class="authorization-link__icon" width="24px" height="24px">
+            <use href="<?=$block->getViewFileUrl('images/icons.svg#icon-avatar')?>"></use>
+        </svg>
+        <?= $escaper->escapeHtml($block->getLabel()) ?>
+        <svg class="authorization-link__icon--check" width="10px" height="10px">
+            <use href="<?=$block->getViewFileUrl('images/icons.svg#icon-check')?>"></use>
+        </svg>
+    </a>
+</li>
