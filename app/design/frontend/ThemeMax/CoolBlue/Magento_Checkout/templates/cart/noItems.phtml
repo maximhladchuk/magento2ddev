@@ -1,0 +1,31 @@
+<?php
+/**
+ * @author      Valia <valiastohnii@gmail.com>
+ * @copyright   Copyright (c) 2022 GmbH
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+
+/**  @var $block \Magento\Checkout\Block\Cart */
+?>
+<div class="cart-empty">
+    <?= $block->getChildHtml('checkout_cart_empty_widget') ?>
+    <p class="cart-empty_title"><?= $block->escapeHtml(__('Your shopping cart is empty.')) ?></p>
+    <p class="cart-empty_text">Thoroughly inspected by Toby.</p>
+    <p class="cart-empty_button"><?= $block->escapeHtml(
+            __(
+                ' <a class="cart-empty_button_link" href="%1">Continue shopping</a> ',
+                $block->escapeUrl($block->getContinueShoppingUrl())
+            ),
+            ['a']
+        ) ?>
+    </p>
+    <img src="<?=$block->getViewFileUrl('images/kit.png')?>" alt="cat" class="cart-empty_img">
+    <?= $block->getChildHtml('shopping.cart.table.after') ?>
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Checkout/js/empty-cart": {}
+        }
+    }
+</script>

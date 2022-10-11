@@ -8,8 +8,26 @@
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')):?>
     <div class="product info detailed">
+        <div class="container-useful-links">
+            <a href="#">Recommended combination</a>
+            <a href="#">Product information</a>
+            <a href="#">Accessories</a>
+            <a href="#">Highlighted</a>
+            <a href="#">Reviews</a>
+            <a href="#">Insurance</a>
+            <a href="#">Specifications</a>
+        </div>
+        <div class="plp-divider"></div>
+        <?php
+        echo $this->getLayout()
+            ->createBlock('Magento\Cms\Block\Block')
+            ->setBlockId('pdp-completing-purchase')
+            ->toHtml();
+        ?>
         <?php $layout = $block->getLayout(); ?>
-        <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+        <h2 class="purchase_block_title" id="product_info">Product information</h2>
+        <div class="product_info">
+            <img src="<?=$block->getViewFileUrl('images/man-with-notebook.png')?>" alt="" class="product_info_img">
             <?php foreach ($detailedInfoGroup as $name):?>
                 <?php
                 $html = $layout->renderElement($name);
@@ -19,22 +37,90 @@
                 $alias = $layout->getElementAlias($name);
                 $label = $block->getChildData($alias, 'title');
                 ?>
-                <div class="data item title"
-                     data-role="collapsible" id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>">
-                    <a class="data switch"
-                       tabindex="-1"
-                       data-toggle="trigger"
-                       href="#<?= $block->escapeUrl($alias) ?>"
-                       id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title">
-                        <?= /* @noEscape */ $label ?>
-                    </a>
-                </div>
-                <div class="data item content"
-                     aria-labelledby="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title"
-                     id="<?= $block->escapeHtmlAttr($alias) ?>" data-role="content">
-                    <?= /* @noEscape */ $html ?>
+                <div>
+                    <div class="data item title"
+                         data-role="collapsible" id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>">
+                        <a class="data switch"
+                           tabindex="-1"
+                           data-toggle="trigger"
+                           href="#<?= $block->escapeUrl($alias) ?>"
+                           id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title">
+                            <?= /* @noEscape */ $label ?>
+                        </a>
+                    </div>
+                    <div class="data item content"
+                         aria-labelledby="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title"
+                         id="<?= $block->escapeHtmlAttr($alias) ?>" data-role="content">
+                        <?= /* @noEscape */ $html ?>
+                    </div>
                 </div>
             <?php endforeach;?>
         </div>
+        <!-- <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
+        </div> -->
+    </div>
+    <div class="product_accessories">
+        <h2 class="product_accessories_title">Suitable accessories</h2>
+        <ul class="product_accessories_list">
+            <li class="product_accessories_item">
+                <a href="" class="product_accessories_link">
+                    <div class="product_accessories_picture">
+                        <img src="<?=$block->getViewFileUrl('images/sleeve.png')?>" alt="" class="product_accessories_img">
+                    </div>
+                    <p class="product_accessories_link_title">Laptop sleeves</p>
+                </a>
+            </li>
+            <li class="product_accessories_item">
+                <a href="" class="product_accessories_link">
+                    <div class="product_accessories_picture">
+                        <img src="<?=$block->getViewFileUrl('images/monitor.png')?>" alt="" class="product_accessories_img">
+                    </div>
+                    <p class="product_accessories_link_title">Monitors</p>
+                </a>
+            </li>
+            <li class="product_accessories_item">
+                <a href="" class="product_accessories_link">
+                    <div class="product_accessories_picture">
+                        <img src="<?=$block->getViewFileUrl('images/mouse.png')?>" alt="" class="product_accessories_img">
+                    </div>
+                    <p class="product_accessories_link_title">Mouses</p>
+                </a>
+            </li>
+            <li class="product_accessories_item">
+                <a href="" class="product_accessories_link">
+                    <div class="product_accessories_picture">
+                        <img src="<?=$block->getViewFileUrl('images/office-software.png')?>" alt="" class="product_accessories_img">
+                    </div>
+                    <p class="product_accessories_link_title">Software</p>
+                </a>
+            </li>
+        </ul>
+        <a class="product_accessories_links" href="">> View all accessories</a>
+    </div>
+    <div class="product_highlighted">
+        <h2 class="product_highlighted_title">Highlighted</h2>
+        <ul class="product_highlighted_list">
+            <li class="product_highlighted_item">
+                <a href="" class="product_highlighted_link">
+                    <img src="<?=$block->getViewFileUrl('images/plp-notebook.png')?>" alt="" class="product_highlighted_img">
+                    <p class="product_highlighted_link_title">Get the most out of your laptop with Microsoft Office</p>
+                    <p class="product_highlighted_link_text">Complete your laptop with the right Microsoft Office suite. We'll tell you what you should pay attention to when making the choice here.</p>
+                </a>
+            </li>
+            <li class="product_highlighted_item">
+                <a href="" class="product_highlighted_link">
+                    <img src="<?=$block->getViewFileUrl('images/plp-norton.png')?>" alt="" class="product_highlighted_img">
+                    <p class="product_highlighted_link_title">Get one year of Norton 360 for free when you purchase your laptop</p>
+                    <p class="product_highlighted_link_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam ullam consequuntur ea eius alias possimus.</p>
+                </a>
+            </li>
+            <li class="product_highlighted_item">
+                <a href="" class="product_highlighted_link">
+                    <img src="<?=$block->getViewFileUrl('images/plp-size.png')?>" alt="" class="product_highlighted_img">
+                    <p class="product_highlighted_link_title">Find the right size for you</p>
+                    <p class="product_highlighted_link_text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Expedita asperiores nostrum tenetur ipsam praesentium maxime.</p>
+                </a>
+            </li>
+        </ul>
     </div>
 <?php endif; ?>

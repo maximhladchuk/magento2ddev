@@ -14,7 +14,13 @@
 ?>
 <?php $_helper = $this->helper(Magento\Catalog\Helper\Output::class); ?>
 <?php $_product = $block->getProduct(); ?>
-
+<div class="product_main_limited">
+    <img src="<?=$block->getViewFileUrl('images/orange_check.png')?>" alt="" class="product_main_limited_img">
+    <div>
+        <p class="product_main_limited_orange">Limited supply, order now</p>
+        <p class="product_main_limited_text">Available for pickup even sooner <a href="">in 1 Coolblue store</a></p>
+    </div>
+</div>
 <div class="product-add-form">
     <form data-product-sku="<?= $block->escapeHtml($_product->getSku()) ?>"
           action="<?= $block->escapeUrl($block->getSubmitUrl($_product)) ?>" method="post"

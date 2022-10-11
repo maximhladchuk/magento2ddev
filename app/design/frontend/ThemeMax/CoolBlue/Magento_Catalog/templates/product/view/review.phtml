@@ -6,3 +6,24 @@
 ?>
 <?php /** @var $block \Magento\Catalog\Block\Product\AbstractProduct */ ?>
 <?= $block->getReviewsSummaryHtml($block->getProduct(), false, true) ?>
+<div class="product_main_rewiew">
+    <p class="product_main_rewiew_title">In the version</p>
+<!--    <input type="text">-->
+    <fieldset>
+        <select class="version-choice">
+            <option value="version-choice-option">Celeron - 4GB - 256GB SSD</option>
+            <option value="version-choice-option">i5 - 8GB - 512GB SSD</option>
+            <option value="version-choice-option">i7 - 16GB - 1TB SSD</option>
+            <option value="version-choice-option">Ryzen 3 - 8GB -256GB SSD - Windows 11</option>
+        </select>
+    </fieldset>
+    <p class="product_main_rewiew_title">Purchase your Word and Excel here Explanation</p>
+    <div class="product_main_rewiew_box">
+        <img src="<?=$block->getViewFileUrl('images/microsoft-office.png')?>" alt="" class="product_main_rewiew_img">
+        <div>
+            <p>Microsoft Office 2021 Home and Student</p>
+            <a href="">Select alternative</a>
+        </div>
+        <p class="product_main_rewiew_price">149,99</p>
+    </div>
+</div>

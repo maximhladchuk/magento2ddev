@@ -17,6 +17,19 @@
         <referenceBlock name="head.components">
             <block class="Magento\Framework\View\Element\Js\Components" name="checkout_page_head_components" template="Magento_Catalog::js/components.phtml"/>
         </referenceBlock>
+        <referenceContainer name="page.top">
+            <block class="Magento\Cms\Block\Block" name="top_list">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">top_list</argument>
+                </arguments>
+            </block>
+            <block class="Magento\Cms\Block\Block" name="category_nav">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">category_nav</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="navigation.sections" remove="true"/>
         <referenceBlock name="page.main.title">
             <arguments>
                 <argument name="css_class" xsi:type="string">product</argument>
@@ -34,6 +47,9 @@
                 <argument name="viewModel" xsi:type="object">Magento\Catalog\ViewModel\Product\Breadcrumbs</argument>
             </arguments>
         </referenceBlock>
+        <move element="breadcrumbs" destination="page.top" after="-"/>
+        <move element="page.main.title" destination="content" before="-"/>
+        <move element="product.info.review" destination="content" after="page.main.title"/>
 
         <referenceContainer name="content">
             <container name="product.info.main" htmlTag="div" htmlClass="product-info-main" before="-">
@@ -100,6 +116,11 @@
                         <block class="Magento\Catalog\Block\Product\View" name="product.info.mailto" template="Magento_Catalog::product/view/mailto.phtml"/>
                     </container>
                 </container>
+                <block class="Magento\Cms\Block\Block" name="pdp-description-list">
+                    <arguments>
+                        <argument name="block_id" xsi:type="string">pdp-description-list</argument>
+                    </arguments>
+                </block>
                 <block class="Magento\Catalog\Block\Product\View\Description" name="product.info.overview" template="Magento_Catalog::product/view/attribute.phtml" group="detailed_info" after="product.info.extrahint">
                     <arguments>
                         <argument name="at_call" xsi:type="string">getShortDescription</argument>
@@ -204,9 +225,9 @@
         </referenceBlock>
         <referenceContainer name="content">
             <block
-                    class="Magento\Catalog\Block\Ui\ProductViewCounter"
-                    name="product_viewed_counter"
-                    template="Magento_Catalog::product/view/counter.phtml"/>
+                class="Magento\Catalog\Block\Ui\ProductViewCounter"
+                name="product_viewed_counter"
+                template="Magento_Catalog::product/view/counter.phtml"/>
         </referenceContainer>
     </body>
 </page>
