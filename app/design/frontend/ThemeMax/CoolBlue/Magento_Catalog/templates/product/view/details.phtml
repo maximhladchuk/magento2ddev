@@ -8,6 +8,47 @@
 ?>
 <?php if ($detailedInfoGroup = $block->getGroupSortedChildNames('detailed_info', 'getChildHtml')):?>
     <div class="product info detailed">
+        <div class="product_sticky unactive">
+            <div class="product_sticky_box">
+                <img src="<?=$block->getViewFileUrl('images/category/s4-3.png')?>" alt="" class="product_sticky_img">
+                <div>
+                    <p class="product_sticky_text">Asus Vivobook 15 M1502IA-EJ137W</p>
+                    <ul class="product_sticky_list">
+                        <li class="product_sticky_item">
+                            <a class="product_sticky_link" href="">
+                                <svg class="product_sticky_icon" width="16px" height="16px">
+                                    <use href="<?=$block->getViewFileUrl('images/icons.svg#icon-checkmark')?>"></use>
+                                </svg><span class="product_sticky_orange">Free</span> delivery
+                            </a>
+                        </li>
+                        <li class="product_sticky_item">
+                            <a class="product_sticky_link" href="">
+                                <svg class="product_sticky_icon" width="16px" height="16px">
+                                    <use href="<?=$block->getViewFileUrl('images/icons.svg#icon-checkmark')?>"></use>
+                                </svg><span class="product_sticky_orange">Free</span> exchange
+                            </a>
+                        </li>
+                        <li class="product_sticky_item">
+                            <a class="product_sticky_link" href="">
+                                <svg class="product_sticky_icon" width="16px" height="16px">
+                                    <use href="<?=$block->getViewFileUrl('images/icons.svg#icon-checkmark')?>"></use>
+                                </svg>14 stores
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="product_sticky_box">
+                <p class="product_sticky_text">779,-</p>
+                <button class="action primary tocart">In my shopping cart</button>
+                <?php
+                echo $this->getLayout()
+                    ->createBlock('Magento\Wishlist\Block\Catalog\Product\View\AddTo\Wishlist')
+                    ->setTemplate('Magento_Wishlist::catalog/product/view/addto/wishlist.phtml')
+                    ->toHtml();
+                ?>
+            </div>
+        </div>
         <div class="container-useful-links">
             <a href="#">Recommended combination</a>
             <a href="#">Product information</a>
@@ -58,7 +99,7 @@
         </div>
         <!-- <div class="product data items" data-mage-init='{"tabs":{"openedState":"active"}}'>
         </div> -->
-    </div>
+
     <div class="product_accessories">
         <h2 class="product_accessories_title">Suitable accessories</h2>
         <ul class="product_accessories_list">
@@ -123,4 +164,94 @@
             </li>
         </ul>
     </div>
+    <div class="product_insure_receive">
+        <div class="product_insure">
+            <div class="product_insure_block">
+                <h2 class="product_insure_title">Insure your laptop</h2>
+                <p class="product_insure_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Illo architecto repudiandae at officia maiores perspiciatis, atque iste dignissimos officiis eos!</p>
+                <ul class="product_insure_list">
+                    <li class="product_insure_item">
+                        <p class="product_insure_text">2-year Backup Plan Damage</p>
+                        <p class="product_insure_txt">39,90 one-time payment</p>
+                    </li>
+                    <li class="product_insure_item">
+                        <p class="product_insure_text">2-year Backup Plan Damage</p>
+                        <p class="product_insure_txt">39,90 one-time payment</p>
+                    </li>
+                    <li class="product_insure_item">
+                        <p class="product_insure_text">2-year Backup Plan Damage</p>
+                        <p class="product_insure_txt">39,90 one-time payment</p>
+                    </li>
+                    <li class="product_insure_item">
+                        <p class="product_insure_text">2-year Backup Plan Damage</p>
+                        <p class="product_insure_txt">39,90 one-time payment</p>
+                    </li>
+                </ul>
+            </div>
+            <img src="<?=$block->getViewFileUrl('images/asusnotebook.png')?>" alt="" class="product_insure_img">
+        </div>
+        <div>
+            <div class="product_receive">
+                <div>
+                    <h2 class="product_insure_title">Receive 1 year of Norton for free with a laptop or desktop</h2>
+                    <p class="product_insure_text">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Magnam illum repellendus incidunt, unde quidem corrupti reprehenderit cumque doloremque explicabo fugiat quibusdam? Totam dolorem quidem alias reprehenderit.</p>
+                </div>
+                <img src="<?=$block->getViewFileUrl('images/checkbox.png')?>" alt="" class="product_insure_img">
+            </div>
+            <div class="product_receive">
+                <div>
+                    <h2 class="product_insure_title">Koop Microsoft 365 bij een laptop en krijg 3 maanden extra</h2>
+                    <p class="product_insure_text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Corporis tempora quos minus, similique ut maxime cum, cumque laboriosam molestiae quasi et magnam natus asperiores cupiditate ullam voluptate veniam quam quod.</p>
+                </div>
+                <img src="<?=$block->getViewFileUrl('images/officelogo.png')?>" alt="" class="product_insure_img">
+            </div>
+        </div>
+    </div>
+    <div class="product_specification">
+        <h2 class="product_specification_title">Specifications</h2>
+        <div class="product_specification_input">
+            <input class="product_specification_input_search" type="text" placeholder="Search for specification...">
+            <a class="product_specification_input_link" href="">
+                <img src="<?=$block->getViewFileUrl('images/search-icon-lob.png')?>" alt="search" class="product_specification_input_img">
+            </a>
+        </div>
+        <div class="product_info">
+            <?php foreach ($detailedInfoGroup as $name):?>
+                <?php
+                $html = $layout->renderElement($name);
+                if (!$html || !trim($html)) {
+                    continue;
+                }
+                $alias = $layout->getElementAlias($name);
+                $label = $block->getChildData($alias, 'title');
+                ?>
+                <div>
+                    <div class="data item title"
+                         data-role="collapsible" id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>">
+                        <a class="data switch"
+                           tabindex="-1"
+                           data-toggle="trigger"
+                           href="#<?= $block->escapeUrl($alias) ?>"
+                           id="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title">
+                            <?= /* @noEscape */ $label ?>
+                        </a>
+                    </div>
+                    <div class="data item content"
+                         aria-labelledby="tab-label-<?= $block->escapeHtmlAttr($alias) ?>-title"
+                         id="<?= $block->escapeHtmlAttr($alias) ?>" data-role="content">
+                        <?= /* @noEscape */ $html ?>
+                    </div>
+                </div>
+            <?php endforeach;?>
+        </div>
+    </div>
+    </div>
+    </div>
+    <script type="text/x-magento-init">
+        {
+            ".product_sticky": {
+                "product_sticky":{}
+            }
+        }
+    </script>
 <?php endif; ?>

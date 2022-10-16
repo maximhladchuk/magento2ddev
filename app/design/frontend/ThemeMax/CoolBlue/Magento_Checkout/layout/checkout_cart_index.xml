@@ -11,6 +11,14 @@
         <referenceContainer name="page.messages">
             <block class="Magento\Checkout\Block\Cart\ValidationMessages" name="checkout.cart.validationmessages"/>
         </referenceContainer>
+        <referenceContainer name="page.top">
+            <block class="Magento\Cms\Block\Block" name="cart-header-links">
+                <arguments>
+                    <argument name="block_id" xsi:type="string">cart-header-links</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+        <referenceContainer name="navigation.sections" remove="true"/>
         <referenceContainer name="content">
             <block class="Magento\Checkout\Block\Cart" name="checkout.cart" template="Magento_Checkout::cart.phtml" cacheable="false">
                 <container name="checkout.cart.items" as="with-items">

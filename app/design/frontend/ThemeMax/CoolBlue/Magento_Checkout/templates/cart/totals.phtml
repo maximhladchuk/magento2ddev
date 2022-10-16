@@ -1,0 +1,32 @@
+<?php
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+?>
+<?php
+/**
+ * Shopping cart totals template
+ * @var $block \Magento\Checkout\Block\Cart\Totals
+ */
+?>
+<div id="cart-totals" class="cart-totals" data-bind="scope:'block-totals'">
+    <div class="conditions-container">
+        <h4 class="conditions-header">
+            Delivery and service
+        </h4>
+        <div class="conditions-list">
+            <div class="conditions-list-item">Ordered before <span> 23:59</span>, delivered tomorrow <span> for free</span>.</div>
+            <div class="conditions-list-item">Choose the day or the time that suits you.</div>
+            <div class="conditions-list-item">Pick up at PostNL pickup points or Coolblue stores.</div>
+        </div>
+    </div>
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+            {
+                "#cart-totals": {
+                    "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+                }
+            }
+    </script>
+</div>
