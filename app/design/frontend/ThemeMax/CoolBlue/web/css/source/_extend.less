@@ -3343,16 +3343,23 @@ div {
 
 .media-width(@extremum, @break) when (@extremum = 'max') and (@break = @screen__m) {
     .sections.nav-sections {
-        display: none;
+        //display: none;
+        position: static;
+        width: auto;
     }
-    .block.block-search {
-        display: none;
+    .header.content {
+        .block.block-search {
+            display: block;
+        }
     }
     .field.search {
-        display: none;
+        //display: none;
     }
     .block.block-search {
         display: none;
+    }
+    .block.block-title {
+        display: block;
     }
     .header.content {
         li {
@@ -3409,7 +3416,14 @@ div {
         flex-wrap: wrap;
     }
 
-    .recommended-list {
-        visibility: hidden;
+    .nav-toggle {
+        top: 6px;
+    }
+    .header.content {
+        a.logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
     }
 }
